@@ -7,5 +7,6 @@ using
 - Styled components
 - Expo google fonts
 - React native svg
+- Animated library
 
 - Using Yarn
