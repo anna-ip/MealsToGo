@@ -1,12 +1,14 @@
-import { FlatList, TouchableOpacity } from 'react-native';
-import styled from 'styled-components';
-import { SafeArea } from '../../../components/utility/safeArea';
-import React, { useContext } from 'react';
-import { FavouritesContext } from '../../../sevices/favourites/favourites.context';
-import { RestaurantInfoCard } from '../../restaurants/components/restaurantInfoCard';
-import { Spacer } from '../../../components/spacer/spacer';
-import { Text } from '../../../components/typography/text';
-import { FadeInView } from '../../../components/animations/fadeAnimation';
+import React, { useContext } from "react";
+import { FlatList, TouchableOpacity } from "react-native";
+
+import styled from "styled-components";
+
+import { FadeInView } from "../../../components/animations/fadeAnimation";
+import { Spacer } from "../../../components/spacer/spacer";
+import { Text } from "../../../components/typography/text";
+import { SafeArea } from "../../../components/utility/safeArea";
+import { FavouritesContext } from "../../../sevices/favourites/favourites.context";
+import { RestaurantInfoCard } from "../../restaurants/components/restaurantInfoCard";
 
 export const FavouritesScreen = ({ navigation }) => {
   const { favourites } = useContext(FavouritesContext);
@@ -23,12 +25,12 @@ export const FavouritesScreen = ({ navigation }) => {
               return (
                 <TouchableOpacity
                   onPress={() =>
-                    navigation.navigate('RestaurantDetail', {
+                    navigation.navigate("RestaurantDetail", {
                       restaurant: item,
                     })
                   }
                 >
-                  <Spacer position='bottom' size='large'>
+                  <Spacer position="bottom" size="large">
                     <FadeInView>
                       <RestaurantInfoCard restaurant={item} />
                     </FadeInView>

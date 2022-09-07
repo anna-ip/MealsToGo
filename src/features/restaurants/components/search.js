@@ -1,6 +1,8 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
+
 import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
+
 import { LocationContext } from "../../../sevices/location/location.context";
 
 export const Search = ({ isFavouritesToggled, onFavouritesToggle }) => {

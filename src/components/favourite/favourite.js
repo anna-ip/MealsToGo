@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
-import styled from "styled-components/native";
-import { AntDesign } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
+
+import { AntDesign } from "@expo/vector-icons";
+import styled from "styled-components/native";
 
 import { FavouritesContext } from "../../sevices/favourites/favourites.context";
 

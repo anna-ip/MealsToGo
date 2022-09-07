@@ -1,4 +1,5 @@
-import { StatusBar, SafeAreaView } from "react-native";
+import { SafeAreaView, StatusBar } from "react-native";
+
 import styled from "styled-components/native";
 
 export const SafeArea = styled(SafeAreaView)`

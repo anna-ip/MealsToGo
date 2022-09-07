@@ -1,17 +1,16 @@
-import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import React, { useState, useEffect } from "react";
-import { ThemeProvider } from "styled-components/native";
-import * as firebase from "firebase";
+import React from "react";
 
+import { Lato_400Regular, useFonts as useLato } from "@expo-google-fonts/lato";
 import {
-  useFonts as useOswald,
   Oswald_400Regular,
+  useFonts as useOswald,
 } from "@expo-google-fonts/oswald";
-import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
-
-import { theme } from "./src/infrastructure/theme";
+import { StatusBar as ExpoStatusBar } from "expo-status-bar";
+import * as firebase from "firebase";
+import { ThemeProvider } from "styled-components/native";
 
 import { Navigation } from "./src/infrastructure/navigation";
+import { theme } from "./src/infrastructure/theme";
 import { AuthenticationContextProvider } from "./src/sevices/authentication/authentication.contex";
 
 const firebaseConfig = {
@@ -28,7 +27,7 @@ if (!firebase.apps.length) {
 }
 
 export default function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  //const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,

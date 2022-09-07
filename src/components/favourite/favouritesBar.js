@@ -1,6 +1,8 @@
 import React from "react";
+import { ScrollView, TouchableOpacity } from "react-native";
+
 import styled from "styled-components/native";
-import { ScrollView, View, TouchableOpacity } from "react-native";
+
 import { CompactRestaurantInfo } from "../restaurant/compactRestaurantInfo";
 import { Spacer } from "../spacer/spacer";
 import { Text } from "../typography/text";

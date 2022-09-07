@@ -1,17 +1,20 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useState } from "react";
+
 import { ActivityIndicator, Colors } from "react-native-paper";
-import {
-  Background,
-  AccountCover,
-  LoginContainer,
-  AuthButton,
-  Title,
-  ErrorContainer,
-} from "../components/accountStyles";
 import { TextInput } from "react-native-paper";
+import { styled } from "styled-components/native";
+
 import { Spacer } from "../../../components/spacer/spacer";
-import { AuthenticationContext } from "../../../sevices/authentication/authentication.contex";
 import { Text } from "../../../components/typography/text";
+import { AuthenticationContext } from "../../../sevices/authentication/authentication.contex";
+import {
+  AccountCover,
+  AuthButton,
+  Background,
+  ErrorContainer,
+  LoginContainer,
+  Title,
+} from "../components/accountStyles";
 
 export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -24,8 +27,7 @@ export const LoginScreen = ({ navigation }) => {
       <Title>Meals To Go</Title>
       <Spacer size="large" position="top" />
       <LoginContainer>
-        <TextInput
-          style={{ width: 300 }}
+        <StyledTextInput
           label="E-mail"
           value={email}
           textContentType="emailAddress"
@@ -34,8 +36,7 @@ export const LoginScreen = ({ navigation }) => {
           onChangeText={(u) => setEmail(u)}
         />
         <Spacer size="large" position="top" />
-        <TextInput
-          style={{ width: 300 }}
+        <StyledTextInput
           label="Password"
           value={password}
           textContentType="password"
@@ -68,3 +69,7 @@ export const LoginScreen = ({ navigation }) => {
     </Background>
   );
 };
+
+const StyledTextInput = styled(TextInput)`
+  width: 300;
+`;

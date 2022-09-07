@@ -1,7 +1,8 @@
+import { Button } from "react-native-paper";
 import styled from "styled-components/native";
+
 import { Text } from "../../../components/typography/text";
 import { colors } from "../../../infrastructure/theme/colors";
-import { Button } from "react-native-paper";
 
 export const Background = styled.ImageBackground.attrs({
   source: require("../../../../assets/home_bg.jpg"),

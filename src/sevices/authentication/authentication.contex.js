@@ -1,4 +1,5 @@
-import React, { useState, createContext } from "react";
+import React, { createContext, useState } from "react";
+
 import * as firebase from "firebase";
 
 import { loginRequest } from "./authentication.service";

@@ -1,13 +1,13 @@
-import React, { useContext, useState, useEffect } from 'react';
-import MapView from 'react-native-maps';
-import styled from 'styled-components/native';
+import React, { useContext, useEffect, useState } from "react";
 
-import { LocationContext } from '../../../sevices/location/location.context';
-import { RestaurantsContext } from '../../../sevices/restaurants/restaurant.contex';
+import MapView from "react-native-maps";
+import styled from "styled-components/native";
 
-import { Search } from '../components/search';
-import { MapCallout } from '../components/mapCallout';
-import { FadeInView } from '../../../components/animations/fadeAnimation';
+import { FadeInView } from "../../../components/animations/fadeAnimation";
+import { LocationContext } from "../../../sevices/location/location.context";
+import { RestaurantsContext } from "../../../sevices/restaurants/restaurant.contex";
+import { MapCallout } from "../components/mapCallout";
+import { Search } from "../components/search";
 
 const Map = styled(MapView)`
   height: 100%;
@@ -53,7 +53,7 @@ export const MapScreen = ({ navigation }) => {
               >
                 <MapView.Callout
                   onPress={() =>
-                    navigation.navigate('RestaurantDetail', {
+                    navigation.navigate("RestaurantDetail", {
                       restaurant: restaurant,
                     })
                   }

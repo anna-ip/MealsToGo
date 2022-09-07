@@ -1,18 +1,20 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Text } from "react-native";
+
 import { ActivityIndicator, Colors } from "react-native-paper";
-import {
-  Background,
-  AccountCover,
-  LoginContainer,
-  AuthButton,
-  Title,
-  ErrorContainer,
-} from "../components/accountStyles";
 import { TextInput } from "react-native-paper";
+import styled from "styled-components/native";
+
 import { Spacer } from "../../../components/spacer/spacer";
 import { AuthenticationContext } from "../../../sevices/authentication/authentication.contex";
-import { colors } from "../../../infrastructure/theme/colors";
+import {
+  AccountCover,
+  AuthButton,
+  Background,
+  ErrorContainer,
+  LoginContainer,
+  Title,
+} from "../components/accountStyles";
 
 export const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -26,7 +28,7 @@ export const RegisterScreen = ({ navigation }) => {
       <Title>Meals To Go</Title>
       <Spacer size="large" position="top" />
       <LoginContainer>
-        <TextInput
+        <StyledTextInput
           style={{ width: 300 }}
           label="E-mail"
           value={email}
@@ -36,7 +38,7 @@ export const RegisterScreen = ({ navigation }) => {
           onChangeText={(u) => setEmail(u)}
         />
         <Spacer size="large" position="top" />
-        <TextInput
+        <StyledTextInput
           style={{ width: 300 }}
           label="Password"
           value={password}
@@ -46,7 +48,7 @@ export const RegisterScreen = ({ navigation }) => {
           onChangeText={(p) => setPassword(p)}
         />
         <Spacer size="large" position="top" />
-        <TextInput
+        <StyledTextInput
           style={{ width: 300 }}
           label="Repeat Password"
           value={repeatedPassword}
@@ -78,3 +80,7 @@ export const RegisterScreen = ({ navigation }) => {
     </Background>
   );
 };
+
+const StyledTextInput = styled(TextInput)`
+  width: 300;
+`;
