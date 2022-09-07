@@ -8,9 +8,11 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
+    "test": "echo \"No test specified\"",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
-    "prettify": "prettier --write ."
+    "prettify": "prettier --write .",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@expo-google-fonts/lato": "^0.2.2",
@@ -46,11 +48,17 @@
     "@react-native-community/eslint-config": "^3.0.1",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.26.0",
+    "husky": "^8.0.1",
     "prettier": "^2.5.1"
   },
   "lint-staged": {
     "*.{json,css,scss,md}": "prettier --write",
     "*.{js,jsx,ts,tsx}": "eslint --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "private": true
 }
