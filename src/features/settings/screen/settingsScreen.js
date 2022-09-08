@@ -1,15 +1,15 @@
-import React, { useContext, useState } from "react";
-import { TouchableOpacity } from "react-native";
+import React, { useContext, useState, useCallback } from 'react';
+import { TouchableOpacity } from 'react-native';
 
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useFocusEffect } from "@react-navigation/native";
-import { Avatar, List } from "react-native-paper";
-import styled from "styled-components/native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect } from '@react-navigation/native';
+import { Avatar, List } from 'react-native-paper';
+import styled from 'styled-components/native';
 
-import { Spacer } from "../../../components/spacer/spacer";
-import { Text } from "../../../components/typography/text";
-import { SafeArea } from "../../../components/utility/safeArea";
-import { AuthenticationContext } from "../../../sevices/authentication/authentication.contex";
+import { Spacer } from '../../../components/spacer/spacer';
+import { Text } from '../../../components/typography/text';
+import { SafeArea } from '../../../components/utility/safeArea';
+import { AuthenticationContext } from '../../../sevices/authentication/authentication.contex';
 
 export const SettingsScreen = ({ navigation }) => {
   const { onLogOut, user } = useContext(AuthenticationContext);
@@ -26,38 +26,38 @@ export const SettingsScreen = ({ navigation }) => {
     }
   };
 
-  useFocusEffect(() => {
-    getUserPhoto(user);
-  }, [user]);
-
-  console.log("photoURI:", userPhoto);
+  useFocusEffect(
+    useCallback(() => {
+      getUserPhoto(user);
+    }, [user])
+  );
 
   return (
     <SafeArea>
-      <Spacer position="top" size="large" />
+      <Spacer position='top' size='large' />
       <AvatarContainer>
-        <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
+        <TouchableOpacity onPress={() => navigation.navigate('Camera')}>
           {!userPhoto ? (
-            <Avatar.Icon size={120} icon="human" backgroundColor="#2182BD" />
+            <Avatar.Icon size={120} icon='human' backgroundColor='#2182BD' />
           ) : (
             <Avatar.Image size={120} source={{ uri: `${userPhoto}` }} />
           )}
         </TouchableOpacity>
-        <Spacer position="top" size="large">
-          <Text variant="label">{user.email}</Text>
+        <Spacer position='top' size='large'>
+          <Text variant='label'>{user.email}</Text>
         </Spacer>
       </AvatarContainer>
 
       <List.Section>
         <SettingsItem
-          title="Favourites"
-          description="View your favourites"
-          left={(props) => <List.Icon {...props} color="black" icon="heart" />}
-          onPress={() => navigation.navigate("Favourites")}
+          title='Favourites'
+          description='View your favourites'
+          left={(props) => <List.Icon {...props} color='black' icon='heart' />}
+          onPress={() => navigation.navigate('Favourites')}
         />
         <SettingsItem
-          title="Logout"
-          left={(props) => <List.Icon {...props} color="black" icon="logout" />}
+          title='Logout'
+          left={(props) => <List.Icon {...props} color='black' icon='logout' />}
           onPress={() => onLogOut()}
         />
       </List.Section>
