@@ -1,28 +1,35 @@
-import camelize from "camelize";
+import camelize from 'camelize';
 
-import { mockImages, mocks } from "./mock";
-
-export const restaurantsRequest = (location = "37.7749295,-122.4194155") => {
-  return new Promise((resolve, reject) => {
-    const mock = mocks[location];
-    if (!mock) {
-      reject("not found");
-    }
-    resolve(mock);
-  });
+export const restaurantsRequest = (location) => {
+  if (__DEV__) {
+    return fetch(
+      `http://e6c6-155-4-39-214.ngrok.io/meals-to-go-f7f9f/us-central1/placesNearby?location=${location}`
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .catch((error) => {
+        console.log('restaurant:', error);
+      });
+  }
+  return fetch(
+    `http://localhost:5001/meals-to-go-f7f9f/us-central1/placesNearby?location=${location}`
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .catch((error) => {
+      console.log('restaurant:', error);
+    });
 };
 
 export const restaurantsTransform = ({ results = [] }) => {
   const mappedResults = results.map((restaurant) => {
-    restaurant.photos = restaurant.photos.map((p) => {
-      return mockImages[Math.ceil(Math.random() * (mockImages.length - 1))];
-    });
-
     return {
       ...restaurant,
       address: restaurant.vicinity,
       isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
-      isClosedTemporarily: restaurant.business_status === "CLOSED_TEMPORARILY",
+      isClosedTemporarily: restaurant.business_status === 'CLOSED_TEMPORARILY',
     };
   });
 
