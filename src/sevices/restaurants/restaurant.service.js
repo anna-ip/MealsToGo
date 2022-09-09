@@ -1,9 +1,10 @@
 import camelize from 'camelize';
+import { ngrokLocalhost } from '../../utils/env';
 
 export const restaurantsRequest = (location) => {
   if (__DEV__) {
     return fetch(
-      `http://e6c6-155-4-39-214.ngrok.io/meals-to-go-f7f9f/us-central1/placesNearby?location=${location}`
+      `${ngrokLocalhost}/meals-to-go-f7f9f/us-central1/placesNearby?location=${location}`
     )
       .then((res) => {
         return res.json();
