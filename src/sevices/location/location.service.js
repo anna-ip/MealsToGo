@@ -1,20 +1,9 @@
 import camelize from 'camelize';
-import { ngrokLocalhost } from '../../utils/env';
+import { host } from '../../utils/env';
 
 export const locationRequest = (searchTerm) => {
-  if (__DEV__) {
-    return fetch(
-      `${ngrokLocalhost}/meals-to-go-f7f9f/us-central1/geocode?city=${searchTerm}`
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .catch((error) => {
-        console.log('location:', error);
-      });
-  }
   return fetch(
-    `http://localhost:5001/meals-to-go-f7f9f/us-central1/geocode?city=${searchTerm}`
+    `${host}/meals-to-go-f7f9f/us-central1/geocode?city=${searchTerm}`
   )
     .then((res) => {
       return res.json();

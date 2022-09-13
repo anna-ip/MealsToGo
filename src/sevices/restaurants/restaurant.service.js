@@ -1,10 +1,10 @@
 import camelize from 'camelize';
-import { ngrokLocalhost } from '../../utils/env';
+import { host } from '../../utils/env';
 
 export const restaurantsRequest = (location) => {
   if (__DEV__) {
     return fetch(
-      `${ngrokLocalhost}/meals-to-go-f7f9f/us-central1/placesNearby?location=${location}`
+      `${host}/meals-to-go-f7f9f/us-central1/placesNearby?location=${location}`
     )
       .then((res) => {
         return res.json();
@@ -13,15 +13,6 @@ export const restaurantsRequest = (location) => {
         console.log('restaurant:', error);
       });
   }
-  return fetch(
-    `http://localhost:5001/meals-to-go-f7f9f/us-central1/placesNearby?location=${location}`
-  )
-    .then((res) => {
-      return res.json();
-    })
-    .catch((error) => {
-      console.log('restaurant:', error);
-    });
 };
 
 export const restaurantsTransform = ({ results = [] }) => {
